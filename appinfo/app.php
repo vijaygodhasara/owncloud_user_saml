@@ -52,7 +52,7 @@ if (OCP\App::isEnabled('user_saml')) {
 	if( (isset($_GET['app']) && $_GET['app'] == 'user_saml') || (!OCP\User::isLoggedIn() && $forceLogin && !isset($_GET['admin_login']) )) {
 
 		require_once 'user_saml/auth.php';
-
+		require_once 'Memcache/ArrayCache.php';
 		if (!\OC::$server->getUserSession()->login('', '')) {
 			$error = true;
 			OCP\Util::writeLog('saml','Error trying to authenticate the user', OCP\Util::DEBUG);
